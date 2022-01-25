@@ -4,7 +4,6 @@ import appConfig from '../config.json';
 import {useRouter} from 'next/router';
 
 
-
 function Title(props) {
     const Tag = props.tag || 'h1';
     return(
@@ -36,10 +35,16 @@ function Title(props) {
 
  export default function PaginaInicial() {
     //const username = 'WendelSousaSilva';
-    const[ username, setUsername] = React.useState('WendelSousaSilva'); 
+    const[ username, setUsername] = React.useState(''); 
     const roteamento = useRouter();
     
+//  var dadosUrl;
+//  fetch(`https://api.github.com/users/${username}`)
+//  .then(res => res.json())
+//  .then(data => dadosUrl = data)
+//  .then(() => console.log(dadosUrl))
   
+
     return (
       <>
         
@@ -87,14 +92,23 @@ function Title(props) {
               <input 
               type="text"
               value ={username}
-              onChange={function (event){
-                console.log('Usuario digitou!', event.target.value);
-                //onde esta o valor?
-                const valor = event.target.value;
-                //troca o valor da variavel
-                setUsername(valor);
+             
 
-              }} />
+              onChange={function (event){
+                
+                
+                  event.target.minLength = 3;
+                  const valor = event.target.value;
+                  
+               
+                
+                  setUsername(valor);
+                  }
+               
+
+                
+
+              } />
               {/* <TextField
                 fullWidth
                 textFieldColors={{
@@ -142,7 +156,7 @@ function Title(props) {
                   borderRadius: '50%',
                   marginBottom: '16px',
                 }}
-                src={`https://github.com/${username}.png`}
+                src={`${username.length > 2 ? `https://github.com/${username}.png` : 'https://github.com/wendelsousasilva.png'}`}
               />
               <Text
                 variant="body4"
@@ -153,8 +167,9 @@ function Title(props) {
                   borderRadius: '1000px'
                 }}
               >
-                {username}
+                {username.length > 2  ? username : ''}
               </Text>
+              
             </Box>
             {/* Photo Area */}
           </Box>
