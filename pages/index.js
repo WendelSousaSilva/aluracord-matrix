@@ -1,5 +1,5 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
-import React from 'react';
+import React, { useState} from 'react';
 import appConfig from '../config.json';
 import {useRouter} from 'next/router';
 
@@ -34,9 +34,22 @@ function Title(props) {
  // export default HomePage
 
  export default function PaginaInicial() {
-    //const username = 'WendelSousaSilva';
-    const[ username, setUsername] = React.useState(''); 
+    
+    const[ username, setUsername] = useState(''); 
+    // const[ name, setName] = useState('');
+    
     const roteamento = useRouter();
+
+    // const dados = fetch('https://api.github.com/users/wendelsousasilva')
+    // .then(function(req) {
+    //   return req.json()
+    
+    // })
+    // .then(function (res)  {
+    //   return setName(res.name)
+      
+    // })
+    // console.log(dados.name)
     
 //  var dadosUrl;
 //  fetch(`https://api.github.com/users/${username}`)
@@ -51,13 +64,13 @@ function Title(props) {
         <Box
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            backgroundColor: appConfig.theme.colors.primary[500],
-            backgroundImage: 'url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)',
+            backgroundImage: 'url(https://www.meuwindows.com/wp-content/uploads/2016/06/windows_xp_1920-1080.jpg)',
             backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
           }}
         >
           <Box
             styleSheet={{
+              
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
@@ -65,8 +78,8 @@ function Title(props) {
                 xs: 'column',
                 sm: 'row',
               },
-              width: '100%', maxWidth: '700px',
-              borderRadius: '5px', padding: '32px', margin: '16px',
+              width: '100%', maxWidth: '500px',
+              borderRadius: '10px', padding: '12px', margin: '16px',
               boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
               backgroundColor: appConfig.theme.colors.neutrals[700],
             }}
@@ -91,6 +104,7 @@ function Title(props) {
               </Text>
               <input 
               type="text"
+              
               value ={username}
              
 
@@ -169,6 +183,9 @@ function Title(props) {
               >
                 {username.length > 2  ? username : ''}
               </Text>
+             
+
+              
               
             </Box>
             {/* Photo Area */}
